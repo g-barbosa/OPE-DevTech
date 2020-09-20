@@ -1,0 +1,2 @@
+rootProject.name='OPE_DevTech'
+include ':app'
