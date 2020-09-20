@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.login)
 
         loginMessage.setText("Faça seu login")
-        imageView.setImageResource(R.drawable.salao)
+        imageView.setImageResource(R.drawable.deriklogo)
 
         loginButton.setOnClickListener{
             val nomeUsuario = emailInput.text.toString()

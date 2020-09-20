@@ -19,7 +19,9 @@
             android:name=".AdicionarServicos"
             android:theme="@style/AppTheme.Toolbar" />
         <activity android:name=".Home" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.Toolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

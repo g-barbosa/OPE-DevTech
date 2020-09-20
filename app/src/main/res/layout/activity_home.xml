@@ -30,6 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/buttonColor"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -41,6 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/buttonColor"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -51,6 +53,7 @@
         android:text="Listar Produtos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/buttonColor"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
