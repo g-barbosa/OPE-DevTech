@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             val nomeUsuario = emailInput.text.toString()
             val camposenha = passwordInput.text.toString()
 
-            if (nomeUsuario != "aluno" && camposenha != "impacta"){
+            if (nomeUsuario != "aluno" || camposenha != "impacta"){
                 Toast.makeText(this, "Usuário ou senha incorretos", Toast.LENGTH_LONG).show()
             }
             else {
