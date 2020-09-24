@@ -6,4 +6,10 @@
     <string name="action_adicionar">Adicionar</string>
     <string name="action_sair">Sair</string>
     <string name="action_logout">Sair</string>
+    <string name="nav_clientes">Clientes</string>
+    <string name="nav_funcionarios">Funcionarios</string>
+    <string name="nav_financas">Finanças</string>
+    <string name="nav_agenda">Agenda</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_closed">Fechar</string>
 </resources>
