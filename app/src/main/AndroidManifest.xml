@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.giovanne.ope_devtech">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".DisciplinaActivity"></activity>
         <activity
             android:name=".Listagens"
-            android:theme="@style/AppTheme.Toolbar"></activity>
+            android:theme="@style/AppTheme.Toolbar" />
         <activity
             android:name=".Configuracoes"
             android:theme="@style/AppTheme.Toolbar" />
@@ -20,7 +23,7 @@
             android:theme="@style/AppTheme.Toolbar" />
         <activity
             android:name=".Home"
-            android:theme="@style/AppTheme.Toolbar"/>
+            android:theme="@style/AppTheme.Toolbar" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.Toolbar">

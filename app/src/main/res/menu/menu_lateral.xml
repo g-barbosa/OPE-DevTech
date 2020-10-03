@@ -3,20 +3,20 @@
     <group android:checkableBehavior="single">
 
         <item android:id="@+id/nav_agenda"
-            android:icon="@android:drawable/ic_menu_agenda"
+            android:icon="@drawable/ic_date"
             android:title="@string/nav_agenda"
             android:checked="true"/>
 
         <item android:id="@+id/nav_clientes"
-            android:icon="@android:drawable/ic_menu_call"
+            android:icon="@drawable/ic_users"
             android:title="@string/nav_clientes" />
 
         <item android:id="@+id/nav_funcionario"
-            android:icon="@android:drawable/ic_menu_share"
+            android:icon="@drawable/ic_id"
             android:title="@string/nav_funcionarios" />
 
         <item android:id="@+id/nav_financas"
-        android:icon="@android:drawable/ic_menu_manage"
+        android:icon="@drawable/ic_cash"
         android:title="@string/nav_financas" />
 
         <item android:id="@+id/nav_sair"
