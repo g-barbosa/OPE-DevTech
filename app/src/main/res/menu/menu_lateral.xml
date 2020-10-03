@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/nav_agenda"
+            android:icon="@drawable/ic_date"
+            android:title="@string/nav_agenda"
+            android:checked="true"/>
+
+        <item android:id="@+id/nav_clientes"
+            android:icon="@drawable/ic_users"
+            android:title="@string/nav_clientes" />
+
+        <item android:id="@+id/nav_funcionario"
+            android:icon="@drawable/ic_id"
+            android:title="@string/nav_funcionarios" />
+
+        <item android:id="@+id/nav_financas"
+        android:icon="@drawable/ic_cash"
+        android:title="@string/nav_financas" />
+
+        <item android:id="@+id/nav_sair"
+            android:icon="@android:drawable/ic_lock_power_off"
+            android:title="@string/action_sair" />
+
+    </group>
+</menu>
