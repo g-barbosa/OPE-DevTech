@@ -2,22 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
 
+        <item android:id="@+id/nav_funcionario"
+            android:icon="@drawable/ic_id"
+            android:title="@string/nav_funcionarios" />
+
         <item android:id="@+id/nav_agenda"
             android:icon="@drawable/ic_date"
-            android:title="@string/nav_agenda"
-            android:checked="true"/>
+            android:title="@string/nav_agenda"/>
 
         <item android:id="@+id/nav_clientes"
             android:icon="@drawable/ic_users"
             android:title="@string/nav_clientes" />
 
-        <item android:id="@+id/nav_funcionario"
-            android:icon="@drawable/ic_id"
-            android:title="@string/nav_funcionarios" />
-
         <item android:id="@+id/nav_financas"
         android:icon="@drawable/ic_cash"
         android:title="@string/nav_financas" />
+
+        <item android:id="@+id/nav_produtos"
+            android:icon="@drawable/ic_cart"
+            android:title="@string/nav_produtos" />
+
+        <item android:id="@+id/nav_servicos"
+            android:icon="@drawable/ic_scissors"
+            android:title="@string/nav_servicos" />
 
         <item android:id="@+id/nav_sair"
             android:icon="@android:drawable/ic_lock_power_off"

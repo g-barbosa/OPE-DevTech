@@ -12,4 +12,6 @@
     <string name="nav_agenda">Agenda</string>
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawer_closed">Fechar</string>
+    <string name="nav_produtos">Produtos</string>
+    <string name="nav_servicos">Serviços</string>
 </resources>

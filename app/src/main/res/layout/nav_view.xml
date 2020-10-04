@@ -11,4 +11,4 @@
     android:fitsSystemWindows="true"
     app:headerLayout="@layout/menu_lateral_cabecalho"
     app:menu="@menu/menu_lateral"
-    tools:showIn="@layout/activity_home" />
+    tools:showIn="@layout/activity_home"/>
