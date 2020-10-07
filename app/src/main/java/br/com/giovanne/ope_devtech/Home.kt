@@ -87,8 +87,13 @@ class Home : DrawerActivity() {
 
     private var funcionarios = listOf<Funcionario>()
     fun taskFuncionarios() {
-        funcionarios = FuncionarioService.getFuncionarios(this)
-        recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) { onClickFuncionario(it) }
+        Thread {
+            funcionarios = FuncionarioService.getFuncionarios(this)
+            runOnUiThread{
+                recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) { onClickFuncionario(it) }
+            }
+
+        }.start()
     }
 
     fun onClickFuncionario(funcionario: Funcionario) {

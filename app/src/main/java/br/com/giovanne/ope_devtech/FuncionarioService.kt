@@ -1,19 +1,20 @@
 package br.com.giovanne.ope_devtech
 
 import android.content.Context
+import android.util.Log
+import java.net.URL
 
 object FuncionarioService {
+    val host = "https://sistema-agendamento-devtech.herokuapp.com"
+    val TAG = "ws_lmsApp"
     fun getFuncionarios(context: Context): List<Funcionario> {
         var funcionarios = mutableListOf<Funcionario>()
+        val url = "$host/employees"
+        val json = URL(url).readText()
 
-        for (i in 1..10) {
-            val d = Funcionario()
-            d.nome = "Nome $i"
-            d.telefone = "Telefone $i"
-            d.usuario = "Username $i"
-            d.foto = "https://static.vecteezy.com/system/resources/previews/000/643/109/non_2x/vector-people-user-icon.jpg"
-            funcionarios.add(d)
-        }
+        Log.d(TAG, json)
+
+
         return funcionarios
     }
 }
