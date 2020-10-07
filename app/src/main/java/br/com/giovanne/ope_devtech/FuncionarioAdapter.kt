@@ -50,12 +50,12 @@ class FuncionarioAdapter(
 
         val funcionario = this.funcionarios[position]
 
-        holder.cardNome.text = funcionario.nome
-        holder.cardTelefone.text = funcionario.telefone
-        holder.cardUser.text = funcionario.usuario
+        holder.cardNome.text = funcionario.name
+        holder.cardTelefone.text = funcionario.phone
+        holder.cardUser.text = funcionario.login
         holder.cardProgress.visibility = View.VISIBLE
 
-        Picasso.with(context).load(funcionario.foto).fit().into(
+        Picasso.with(context).load("https://upload.wikimedia.org/wikipedia/en/c/cd/Dwight_Schrute.jpg").fit().into(
             holder.cardImg,
             object : com.squareup.picasso.Callback {
                 override fun onSuccess() {

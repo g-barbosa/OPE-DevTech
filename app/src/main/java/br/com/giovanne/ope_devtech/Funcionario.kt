@@ -4,16 +4,16 @@ import java.io.Serializable
 
 class Funcionario: Serializable {
 
-    var id: Long = 0
-    var nome = ""
-    var telefone = ""
+    var entityId = ""
+    var name = ""
+    var phone = ""
     var foto = ""
-    var usuario = ""
-    var entrada = ""
-    var saida = ""
+    var login = ""
+    var starts = ""
+    var ends = ""
 
     override fun toString(): String {
-        return "$nome"
+        return "$name"
     }
 
 }
