@@ -3,6 +3,7 @@ package br.com.giovanne.ope_devtech
 import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import java.net.URL
 
@@ -18,6 +19,12 @@ object FuncionarioService {
 
 
         return funcionarios
+    }
+
+    fun saveFuncionario(funcionario: Funcionario)  {
+        val url = "$host/employees"
+        val jsonFuncionario = GsonBuilder().create().toJson(funcionario)
+        HttpHelper.post(url, jsonFuncionario)
     }
 
     inline fun <reified T> parserJson(json: String): T {

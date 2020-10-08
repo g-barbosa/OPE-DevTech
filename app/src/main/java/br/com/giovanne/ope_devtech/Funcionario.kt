@@ -11,6 +11,7 @@ class Funcionario: Serializable {
     var login = ""
     var starts = ""
     var ends = ""
+    var password = ""
 
     override fun toString(): String {
         return "$name"
