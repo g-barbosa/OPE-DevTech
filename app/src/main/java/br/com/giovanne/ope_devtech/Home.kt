@@ -18,6 +18,8 @@ class Home : DrawerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        val nome = Prefs.getString("nome")
+        Toast.makeText(this, nome, Toast.LENGTH_LONG).show()
 
         this.drawerLayout = layoutMenuLateralHome
         this.navView = menu_lateral_home
