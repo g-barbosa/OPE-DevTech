@@ -87,12 +87,19 @@ class Home : DrawerActivity() {
         taskFuncionarios()
     }
 
+    fun enviaNotificacao(funcionario: Funcionario) {
+        val intent = Intent(this, FuncionarioActivity::class.java)
+        intent.putExtra("funcionario", funcionario)
+        NotificationUtil.create(1, intent, "DevTechApp", "Você tem um novo funcionário em ${funcionario.name}")
+    }
+
     private var funcionarios = listOf<Funcionario>()
     fun taskFuncionarios() {
         Thread {
             funcionarios = FuncionarioService.getFuncionarios(this)
             runOnUiThread{
                 recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) { onClickFuncionario(it) }
+                enviaNotificacao(this.funcionarios[0])
             }
 
         }.start()
