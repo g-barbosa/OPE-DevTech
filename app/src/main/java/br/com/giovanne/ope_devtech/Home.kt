@@ -18,6 +18,8 @@ class Home : DrawerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        val nome = Prefs.getString("nome")
+        Toast.makeText(this, nome, Toast.LENGTH_LONG).show()
 
         this.drawerLayout = layoutMenuLateralHome
         this.navView = menu_lateral_home
@@ -85,15 +87,21 @@ class Home : DrawerActivity() {
         taskFuncionarios()
     }
 
-    private var funcionarios = listOf<Funcionario>()
-    fun taskFuncionarios() {
-        funcionarios = FuncionarioService.getFuncionarios(this)
-        recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) { onClickFuncionario(it) }
+    fun enviaNotificacao(funcionario: Funcionario) {
+        val intent = Intent(this, Home::class.java)
+        intent.putExtra("funcionario", funcionario)
+        NotificationUtil.create(1, intent, "DevTechApp", "Você tem um novo funcionário em ${funcionario.name}")
     }
 
-    fun onClickFuncionario(funcionario: Funcionario) {
-        val it = Intent(this, FuncionarioActivity::class.java)
-        it.putExtra("funcionario", funcionario)
-        startActivity(it)
+    private var funcionarios = listOf<Funcionario>()
+    fun taskFuncionarios() {
+        Thread {
+            funcionarios = FuncionarioService.getFuncionarios(this)
+            runOnUiThread{
+                recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) {  }
+                enviaNotificacao(this.funcionarios[0])
+            }
+
+        }.start()
     }
 }

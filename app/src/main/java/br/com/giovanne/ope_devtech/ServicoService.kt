@@ -5,29 +5,28 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import java.net.URL
 
-object FuncionarioService {
+object ServicoService {
     val host = "https://sistema-agendamento-devtech.herokuapp.com"
     val TAG = "ws_lmsApp"
-    fun getFuncionarios(context: Context): List<Funcionario> {
+    fun getServicos(context: Context): List<Servico> {
 
-        val url = "$host/employees"
+        val url = "$host/prices"
         val json = HttpHelper.get(url)
 
         Log.d(TAG, json)
-        var funcionarios = parserJson<List<Funcionario>>(json)
+        var services = parserJson<List<Servico>>(json)
 
 
-        return funcionarios
+        return services
         //val dao = DatabaseManager.getFuncionarioDAO()
         //return dao.getAll()
     }
 
-    fun saveFuncionario(funcionario: Funcionario)  {
-        val url = "$host/employees"
-        val jsonFuncionario = GsonBuilder().create().toJson(funcionario)
-        HttpHelper.post(url, jsonFuncionario)
+    fun saveServicos(servico: Servico)  {
+        val url = "$host/prices"
+        val jsonCliente = GsonBuilder().create().toJson(servico)
+        HttpHelper.post(url, jsonCliente)
         //val dao = DatabaseManager.getFuncionarioDAO()
         //dao.insert(funcionario)
     }

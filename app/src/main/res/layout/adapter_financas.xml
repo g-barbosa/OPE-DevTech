@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_funcionario"
+    android:id="@+id/card_financas"
     android:layout_margin="6dp"
     app:cardElevation="6dp"
     app:cardCornerRadius="10dp"
@@ -23,7 +23,7 @@
             android:textColor="#000000"
             android:layout_gravity="center"
             android:gravity="center"
-            android:id="@+id/card_nome"
+            android:id="@+id/card_lucro"
             />
         <TextView
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             android:textColor="#888888"
             android:layout_gravity="center"
             android:gravity="center"
-            android:id="@+id/card_user"
+            android:id="@+id/card_despesa"
             />
         <TextView
             android:layout_width="match_parent"
@@ -45,42 +45,8 @@
             android:textColor="#000000"
             android:layout_gravity="center"
             android:gravity="center"
-            android:id="@+id/card_telefone"
+            android:id="@+id/card_total"
             />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:showDividers="middle"
-            android:layout_marginLeft="35dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="#000000"
-                android:id="@+id/card_starts"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="#000000"
-                android:id="@+id/card_ends"
-                />
-        </LinearLayout>
-
-
     </LinearLayout>
-
 
 </androidx.cardview.widget.CardView>

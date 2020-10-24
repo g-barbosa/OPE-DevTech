@@ -18,8 +18,25 @@ class AdicionarServicos : AppCompatActivity() {
         setContentView(R.layout.activity_adicionar_servicos)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Adicionar Serviços"
+        supportActionBar?.title = "Adicionar Funcionário"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        salvar.setOnClickListener{
+            var f = Funcionario()
+            f.name = name.text.toString()
+            f.password = password.text.toString()
+            f.phone = phone.text.toString()
+            f.login = login.text.toString()
+            f.starts = starts.text.toString()
+            f.ends = ends.text.toString()
+
+            Thread {
+                FuncionarioService.saveFuncionario(f)
+                runOnUiThread {
+                    finish()
+                }
+            }.start()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

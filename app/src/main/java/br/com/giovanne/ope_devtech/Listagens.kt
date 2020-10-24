@@ -3,9 +3,12 @@ package br.com.giovanne.ope_devtech
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_listagens.*
+import kotlinx.android.synthetic.main.activity_listagens.recyclerFuncionarios
 import kotlinx.android.synthetic.main.nav_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -26,9 +29,9 @@ class Listagens : DrawerActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         configuraMenuLateral()
 
-        recyclerDisciplinas?.layoutManager = LinearLayoutManager(this)
-        recyclerDisciplinas?.itemAnimator = DefaultItemAnimator()
-        recyclerDisciplinas?.setHasFixedSize(true)
+        recyclerFuncionarios?.layoutManager = LinearLayoutManager(this)
+        recyclerFuncionarios?.itemAnimator = DefaultItemAnimator()
+        recyclerFuncionarios?.setHasFixedSize(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -43,19 +46,50 @@ class Listagens : DrawerActivity() {
 
     override fun onResume() {
         super.onResume()
-        taskFuncionarios()
-    }
+        val args = intent.extras
+        val title = args?.getString("title")
+        when(title) {
+            "Clientes" -> {
+                var clientes = listOf<Cliente>()
+                Thread {
+                    clientes = ClienteService.getClientes(this)
+                    runOnUiThread{
+                        recyclerFuncionarios?.adapter = ClienteAdapter(clientes){ }
+                    }
 
-    private var funcionarios = listOf<Funcionario>()
-    fun taskFuncionarios() {
-        funcionarios = FuncionarioService.getFuncionarios(this)
-        recyclerDisciplinas?.adapter = FuncionarioAdapter(funcionarios) { onClickFuncionario(it) }
-    }
+                }.start()
+            }
+            "Produtos" -> {
+                var produtos = listOf<Produto>()
+                Thread {
+                    produtos = ProdutoService.getProdutos(this)
+                    runOnUiThread{
+                        recyclerFuncionarios?.adapter = ProdutoAdapter(produtos){  }
+                    }
 
-    fun onClickFuncionario(funcionario: Funcionario) {
-        val it = Intent(this, FuncionarioActivity::class.java)
-        it.putExtra("funcionario", funcionario)
-        startActivity(it)
+                }.start()
+            }
+            "Servicos" -> {
+                var servicos = listOf<Servico>()
+                Thread {
+                    servicos = ServicoService.getServicos(this)
+                    runOnUiThread{
+                        recyclerFuncionarios?.adapter = ServicoAdapter(servicos){  }
+                    }
+
+                }.start()
+            }
+            "Finanças" -> {
+                var financas = Financas()
+                Thread {
+                    financas = FinancasService.getFinances(this)
+                    runOnUiThread{
+                        recyclerFuncionarios?.adapter = FinancasAdapter(financas){  }
+                    }
+
+                }.start()
+            }
+        }
     }
 
 }
