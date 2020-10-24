@@ -88,7 +88,7 @@ class Home : DrawerActivity() {
     }
 
     fun enviaNotificacao(funcionario: Funcionario) {
-        val intent = Intent(this, FuncionarioActivity::class.java)
+        val intent = Intent(this, Home::class.java)
         intent.putExtra("funcionario", funcionario)
         NotificationUtil.create(1, intent, "DevTechApp", "Você tem um novo funcionário em ${funcionario.name}")
     }
@@ -98,16 +98,10 @@ class Home : DrawerActivity() {
         Thread {
             funcionarios = FuncionarioService.getFuncionarios(this)
             runOnUiThread{
-                recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) { onClickFuncionario(it) }
+                recyclerFuncionarios?.adapter = FuncionarioAdapter(funcionarios) {  }
                 enviaNotificacao(this.funcionarios[0])
             }
 
         }.start()
-    }
-
-    fun onClickFuncionario(funcionario: Funcionario) {
-        val it = Intent(this, FuncionarioActivity::class.java)
-        it.putExtra("funcionario", funcionario)
-        startActivity(it)
     }
 }

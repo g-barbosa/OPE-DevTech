@@ -79,7 +79,16 @@ class Listagens : DrawerActivity() {
 
                 }.start()
             }
+            "Finanças" -> {
+                var financas = Financas()
+                Thread {
+                    financas = FinancasService.getFinances(this)
+                    runOnUiThread{
+                        recyclerFuncionarios?.adapter = FinancasAdapter(financas){  }
+                    }
 
+                }.start()
+            }
         }
     }
 

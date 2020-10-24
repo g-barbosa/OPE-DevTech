@@ -29,7 +29,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     }
 
     private fun showNotification(mensagemRemota: RemoteMessage){
-        val intent = Intent(this, FuncionarioActivity::class.java)
+        val intent = Intent(this, Home::class.java)
         val titulo = mensagemRemota?.notification?.title
         val corpo = mensagemRemota?.notification?.body
 
