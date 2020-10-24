@@ -50,12 +50,31 @@ class Listagens : DrawerActivity() {
         val title = args?.getString("title")
         when(title) {
             "Clientes" -> {
-                Toast.makeText(this, "teste", Toast.LENGTH_LONG).show()
                 var clientes = listOf<Cliente>()
                 Thread {
                     clientes = ClienteService.getClientes(this)
                     runOnUiThread{
-                        recyclerFuncionarios?.adapter = ClienteAdapter(clientes){ onClick(it) }
+                        recyclerFuncionarios?.adapter = ClienteAdapter(clientes){ }
+                    }
+
+                }.start()
+            }
+            "Produtos" -> {
+                var produtos = listOf<Produto>()
+                Thread {
+                    produtos = ProdutoService.getProdutos(this)
+                    runOnUiThread{
+                        recyclerFuncionarios?.adapter = ProdutoAdapter(produtos){  }
+                    }
+
+                }.start()
+            }
+            "Servicos" -> {
+                var servicos = listOf<Servico>()
+                Thread {
+                    servicos = ServicoService.getServicos(this)
+                    runOnUiThread{
+                        recyclerFuncionarios?.adapter = ServicoAdapter(servicos){  }
                     }
 
                 }.start()
@@ -64,6 +83,4 @@ class Listagens : DrawerActivity() {
         }
     }
 
-    fun onClick(cliente: Cliente) {
-    }
 }
