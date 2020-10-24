@@ -9,12 +9,6 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         />
     <item
-        android:id="@+id/action_atualizar"
-        android:icon="@drawable/ic_atualizar_white"
-        android:title="@string/action_atualizar"
-        app:showAsAction="always"
-        />
-    <item
         android:id="@+id/action_adicionar"
         android:icon="@drawable/ic_adicionar_white"
         android:title="@string/action_adicionar"
@@ -23,12 +17,6 @@
     <item
         android:id="@+id/action_config"
         android:title="@string/action_config"
-        app:showAsAction="never"
-        />
-
-    <item
-        android:id="@+id/action_logout"
-        android:title="@string/action_logout"
         app:showAsAction="never"
         />
 </menu>

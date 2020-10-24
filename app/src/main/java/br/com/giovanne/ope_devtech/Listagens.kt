@@ -1,19 +1,22 @@
 package br.com.giovanne.ope_devtech
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_listagens.*
+import kotlinx.android.synthetic.main.nav_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class Listagens : AppCompatActivity() {
+class Listagens : DrawerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listagens)
+
+        this.drawerLayout = layoutMenuLateralListagens
+        this.navView = menu_lateral_home
 
         val args = intent.extras
         val title = args?.getString("title")
@@ -21,6 +24,7 @@ class Listagens : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = title
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        configuraMenuLateral()
 
         recyclerDisciplinas?.layoutManager = LinearLayoutManager(this)
         recyclerDisciplinas?.itemAnimator = DefaultItemAnimator()
@@ -39,18 +43,19 @@ class Listagens : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        taskDisciplinas()
+        taskFuncionarios()
     }
 
-    private var disciplinas = listOf<Disciplina>()
-    fun taskDisciplinas() {
-        disciplinas = DisciplinaService.getDisciplinas(this)
-        recyclerDisciplinas?.adapter = DisciplinaAdapter(disciplinas) { onClickDisciplina(it) }
+    private var funcionarios = listOf<Funcionario>()
+    fun taskFuncionarios() {
+        funcionarios = FuncionarioService.getFuncionarios(this)
+        recyclerDisciplinas?.adapter = FuncionarioAdapter(funcionarios) { onClickFuncionario(it) }
     }
 
-    fun onClickDisciplina(disciplina: Disciplina) {
-        val it = Intent(this, DisciplinaActivity::class.java)
-        it.putExtra("disciplina", disciplina)
+    fun onClickFuncionario(funcionario: Funcionario) {
+        val it = Intent(this, FuncionarioActivity::class.java)
+        it.putExtra("funcionario", funcionario)
         startActivity(it)
     }
+
 }

@@ -2,13 +2,15 @@ package br.com.giovanne.ope_devtech
 
 import java.io.Serializable
 
-class Disciplina: Serializable {
+class Funcionario: Serializable {
 
     var id: Long = 0
     var nome = ""
-    var ementa = ""
+    var telefone = ""
     var foto = ""
-    var professor = ""
+    var usuario = ""
+    var entrada = ""
+    var saida = ""
 
     override fun toString(): String {
         return "$nome"
