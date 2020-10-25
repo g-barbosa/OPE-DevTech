@@ -16,4 +16,20 @@ object DatabaseManager {
     fun getFuncionarioDAO(): FuncionarioDAO {
         return dbInstance.funcionarioDAO()
     }
+
+    fun getClienteDAO(): ClienteDAO {
+        return dbInstance.clienteDAO()
+    }
+
+    fun getProdutoDAO(): ProdutoDAO {
+        return dbInstance.produtoDAO()
+    }
+
+    fun getServicoDAO(): ServicoDAO {
+        return dbInstance.servicoDAO()
+    }
+
+    fun getFinancasDAO(): FinancasDAO {
+        return dbInstance.financasDAO()
+    }
 }

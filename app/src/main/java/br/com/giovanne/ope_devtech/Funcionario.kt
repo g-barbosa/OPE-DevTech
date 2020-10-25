@@ -7,7 +7,7 @@ import java.io.Serializable
 @Entity(tableName="funcionario")
 class Funcionario: Serializable {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     var id:Long = 0
     var entityId = ""
     var name = ""

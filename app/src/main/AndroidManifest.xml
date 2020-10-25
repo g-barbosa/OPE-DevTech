@@ -20,7 +20,6 @@
 
         </service>
         <activity android:name=".DrawerActivity"></activity>
-        <activity android:name=".FuncionarioActivity" />
         <activity
             android:name=".Listagens"
             android:theme="@style/AppTheme.Toolbar" />

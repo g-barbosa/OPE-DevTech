@@ -2,8 +2,10 @@ package br.com.giovanne.ope_devtech
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_home.*
@@ -32,6 +34,29 @@ class Listagens : DrawerActivity() {
         recyclerFuncionarios?.layoutManager = LinearLayoutManager(this)
         recyclerFuncionarios?.itemAnimator = DefaultItemAnimator()
         recyclerFuncionarios?.setHasFixedSize(true)
+    }
+
+    fun showText(text: String){
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?) : Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+
+        (menu?.findItem(R.id.actionBuscar)?.actionView as SearchView).setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener{
+                override fun onQueryTextChange(newText: String): Boolean {
+                    showText(newText)
+                    return false
+                }
+
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    showText(query)
+                    return false
+                }
+            })
+
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

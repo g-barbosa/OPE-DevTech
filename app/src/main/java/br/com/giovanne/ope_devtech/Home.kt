@@ -19,7 +19,6 @@ class Home : DrawerActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         val nome = Prefs.getString("nome")
-        Toast.makeText(this, nome, Toast.LENGTH_LONG).show()
 
         this.drawerLayout = layoutMenuLateralHome
         this.navView = menu_lateral_home
@@ -90,7 +89,7 @@ class Home : DrawerActivity() {
     fun enviaNotificacao(funcionario: Funcionario) {
         val intent = Intent(this, Home::class.java)
         intent.putExtra("funcionario", funcionario)
-        NotificationUtil.create(1, intent, "DevTechApp", "Você tem um novo funcionário em ${funcionario.name}")
+        NotificationUtil.create(1, intent, "DevTechApp", "push")
     }
 
     private var funcionarios = listOf<Funcionario>()

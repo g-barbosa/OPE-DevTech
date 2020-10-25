@@ -12,23 +12,48 @@ object ProdutoService {
     fun getProdutos(context: Context): List<Produto> {
 
         val url = "$host/stock"
-        val json = HttpHelper.get(url)
 
-        Log.d(TAG, json)
-        var stock = parserJson<List<Produto>>(json)
+        if (HttpHelper.hasActiveInternetConnection()){
+            val json = HttpHelper.get(url)
 
+            Log.d(TAG, json)
+            var stock = parserJson<List<Produto>>(json)
 
-        return stock
-        //val dao = DatabaseManager.getFuncionarioDAO()
-        //return dao.getAll()
+            for (p in stock) {
+                saveOffline(p)
+            }
+            return stock
+        }
+        else {
+            val dao = DatabaseManager.getProdutoDAO()
+            return dao.getAll()
+        }
     }
 
     fun saveProdutos(produto: Produto)  {
         val url = "$host/stock"
-        val jsonCliente = GsonBuilder().create().toJson(produto)
-        HttpHelper.post(url, jsonCliente)
-        //val dao = DatabaseManager.getFuncionarioDAO()
-        //dao.insert(funcionario)
+
+        if (HttpHelper.hasActiveInternetConnection()){
+            val jsonCliente = GsonBuilder().create().toJson(produto)
+            HttpHelper.post(url, jsonCliente)
+        }
+        else {
+            val dao = DatabaseManager.getProdutoDAO()
+            dao.insert(produto)
+        }
+
+    }
+
+    fun saveOffline (produto: Produto) {
+        val dao = DatabaseManager.getProdutoDAO()
+        if (! existe(produto)) {
+            dao.insert(produto)
+        }
+    }
+
+    fun existe(produto: Produto): Boolean {
+        val dao = DatabaseManager.getProdutoDAO()
+        return dao.getById(produto.id) != null
     }
 
     inline fun <reified T> parserJson(json: String): T {
