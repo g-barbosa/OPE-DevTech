@@ -12,23 +12,51 @@ object ServicoService {
     fun getServicos(context: Context): List<Servico> {
 
         val url = "$host/prices"
-        val json = HttpHelper.get(url)
-
-        Log.d(TAG, json)
-        var services = parserJson<List<Servico>>(json)
 
 
-        return services
-        //val dao = DatabaseManager.getFuncionarioDAO()
-        //return dao.getAll()
+        if (HttpHelper.hasActiveInternetConnection()){
+            val json = HttpHelper.get(url)
+
+            Log.d(TAG, json)
+            var services = parserJson<List<Servico>>(json)
+
+            for (s in services) {
+                saveOffline(s)
+            }
+
+            return services
+        }
+        else {
+            val dao = DatabaseManager.getServicoDAO()
+            return dao.getAll()
+        }
     }
 
     fun saveServicos(servico: Servico)  {
         val url = "$host/prices"
-        val jsonCliente = GsonBuilder().create().toJson(servico)
-        HttpHelper.post(url, jsonCliente)
-        //val dao = DatabaseManager.getFuncionarioDAO()
-        //dao.insert(funcionario)
+
+
+        if (HttpHelper.hasActiveInternetConnection()){
+            val jsonCliente = GsonBuilder().create().toJson(servico)
+            HttpHelper.post(url, jsonCliente)
+        }
+        else {
+            val dao = DatabaseManager.getServicoDAO()
+            dao.insert(servico)
+        }
+
+    }
+
+    fun saveOffline (servico: Servico) {
+        val dao = DatabaseManager.getServicoDAO()
+        if (! existe(servico)) {
+            dao.insert(servico)
+        }
+    }
+
+    fun existe(servico: Servico): Boolean {
+        val dao = DatabaseManager.getServicoDAO()
+        return dao.getById(servico.id) != null
     }
 
     inline fun <reified T> parserJson(json: String): T {

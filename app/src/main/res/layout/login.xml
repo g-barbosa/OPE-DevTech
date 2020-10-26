@@ -6,7 +6,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="false"
         android:layout_gravity="center"/>
 
@@ -56,5 +56,12 @@
         android:text="Entrar"
         android:textAlignment="center"
         android:textColor="#FFFFFF" />
+
+    <ProgressBar
+        android:id="@+id/card_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
 
 </LinearLayout>
