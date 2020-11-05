@@ -66,7 +66,8 @@ open class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItem
                 startActivity(intent)
             }
             R.id.nav_sair -> {
-                intent = Intent(this, MainActivity::class.java)
+                intent = Intent(this, mapasActivity::class.java)
+                //intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
         }
