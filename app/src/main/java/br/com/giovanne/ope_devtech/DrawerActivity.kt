@@ -65,9 +65,12 @@ open class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItem
                 intent.putExtra("title", "Servicos")
                 startActivity(intent)
             }
-            R.id.nav_sair -> {
+            R.id.nav_localizacao -> {
                 intent = Intent(this, mapasActivity::class.java)
-                //intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_sair -> {
+                intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
         }

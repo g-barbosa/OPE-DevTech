@@ -1,6 +1,7 @@
 package br.com.giovanne.ope_devtech
 
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import java.util.jar.Manifest
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +32,13 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap?) {
         this.map = googleMap
 
-        val location = LatLng(-23.525322, -46.649481)
+        val ok = PermissionUtils.validate(activity!!, 1,
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION)
+
+        if (ok) map?.isMyLocationEnabled = true
+
+        val location = LatLng(-23.576563, -46.516964)
         val update = CameraUpdateFactory.newLatLngZoom(location, 18f)
         map?.moveCamera(update)
 
@@ -52,5 +60,20 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
         return view
 
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        for (result in grantResults) {
+            if (result == PackageManager.PERMISSION_GRANTED) {
+                map?.isMyLocationEnabled = true
+                return
+            }
+        }
     }
 }
