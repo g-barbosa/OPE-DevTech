@@ -26,6 +26,10 @@
             android:icon="@drawable/ic_scissors"
             android:title="@string/nav_servicos" />
 
+        <item android:id="@+id/nav_localizacao"
+            android:icon="@drawable/ic_map_marker"
+            android:title="@string/action_localizacao" />
+
         <item android:id="@+id/nav_sair"
             android:icon="@android:drawable/ic_lock_power_off"
             android:title="@string/action_sair" />

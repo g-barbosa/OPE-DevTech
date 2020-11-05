@@ -14,4 +14,9 @@
     <string name="navigation_drawer_closed">Fechar</string>
     <string name="nav_produtos">Produtos</string>
     <string name="nav_servicos">Serviços</string>
+    <string name="API_KEY">AIzaSyDmuGgEuX_X14URgg34JrduTll-slDR-S4</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_localizacao">Localização</string>
 </resources>
