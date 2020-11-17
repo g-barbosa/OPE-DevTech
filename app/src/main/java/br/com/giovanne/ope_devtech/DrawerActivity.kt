@@ -42,7 +42,8 @@ open class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItem
 
         when(item.itemId) {
             R.id.nav_agenda -> {
-                intent.putExtra("title", "Agenda")
+                intent = Intent(this, AgendaActivity::class.java)
+                intent.putExtra("title", "Agendamentos")
                 startActivity(intent)
             }
             R.id.nav_clientes -> {

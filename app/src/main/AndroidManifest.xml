@@ -7,18 +7,23 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".DevTechApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mapasActivity"></activity>
+        <activity
+            android:name=".AgendaActivity"
+            android:theme="@style/AppTheme.Toolbar"></activity>
+        <activity
+            android:name=".mapasActivity"
+            android:theme="@style/AppTheme.Toolbar"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
