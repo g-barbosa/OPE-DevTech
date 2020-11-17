@@ -32,4 +32,8 @@ object DatabaseManager {
     fun getFinancasDAO(): FinancasDAO {
         return dbInstance.financasDAO()
     }
+
+    fun getAgendamentosDAO(): AgendamentoDAO {
+        return dbInstance.agendamentosDAO()
+    }
 }
