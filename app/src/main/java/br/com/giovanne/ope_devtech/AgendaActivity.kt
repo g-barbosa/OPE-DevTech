@@ -3,27 +3,29 @@ package br.com.giovanne.ope_devtech
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.applandeo.materialcalendarview.EventDay
 import kotlinx.android.synthetic.main.activity_agenda.*
+import kotlinx.android.synthetic.main.activity_agenda.card_progress
 import kotlinx.android.synthetic.main.activity_agenda.recyclerFuncionarios
-import kotlinx.android.synthetic.main.activity_listagens.*
+import kotlinx.android.synthetic.main.login.*
+import kotlinx.android.synthetic.main.nav_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.time.temporal.TemporalQueries.localDate
-import java.util.*
 
 
-class AgendaActivity : AppCompatActivity() {
+class AgendaActivity : DrawerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agenda)
+
+        this.drawerLayout = layoutMenuLateralAgendas
+        this.navView = menu_lateral_home
 
         val args = intent.extras
         val title = args?.getString("title")
@@ -31,11 +33,12 @@ class AgendaActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = title
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        configuraMenuLateral()
 
         recyclerFuncionarios?.layoutManager = LinearLayoutManager(this)
         recyclerFuncionarios?.itemAnimator = DefaultItemAnimator()
         recyclerFuncionarios?.setHasFixedSize(true)
-
+        card_progress.visibility = View.VISIBLE
     }
 
     fun showText(text: String){
@@ -69,9 +72,8 @@ class AgendaActivity : AppCompatActivity() {
             runOnUiThread{
                 recyclerFuncionarios?.adapter = AgendaAdapter(agendamentos){ onClickAgendamento(it) }
             }
-
         }.start()
-
+        card_progress.visibility = View.GONE
     }
 
     fun onClickAgendamento(agendamento: Agendamento) {

@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                         card_progress.visibility = GONE
                         startActivity(intent)
                     }
-                    if (status == 0) {
+                    else if (status == 0) {
                         Toast.makeText(this, "Você precisa estar conectado à internet para logar", Toast.LENGTH_LONG).show()
                         card_progress.visibility = GONE
                     }
